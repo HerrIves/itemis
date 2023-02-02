@@ -5,6 +5,6 @@ public class ReceiptRoundTest {
 
     @Test
     public void roundTest() {
-        Assert.assertEquals(0.05, Receipt.roundTaxes(0.04));
+        Assert.assertEquals(3.35, Receipt.roundTaxes(3.33), 0.0001);
     }
 }
