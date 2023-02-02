@@ -1,3 +1,5 @@
+package itemtaxes;
+
 import org.junit.Assert;
 import org.junit.Test;
 import itemtaxes.Taxes;

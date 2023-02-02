@@ -1,9 +1,10 @@
+package itemtaxes;
+
 import items.Book;
 import items.CD;
 import items.ImportedBottle;
 import org.junit.Assert;
 import org.junit.Test;
-import itemtaxes.Taxes;
 
 public class TaxesTest {
 
