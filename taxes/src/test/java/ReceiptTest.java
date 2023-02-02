@@ -1,7 +1,6 @@
 import items.Book;
 import items.CD;
 import items.ImportedBottle;
-import items.Item;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -29,9 +28,10 @@ public class ReceiptTest {
     public void taxesForImportedBottleTest(){
         ImportedBottle bottle = new ImportedBottle();
         bottle.setPrice(47.50);
-        bottle.setIsExempt(true);
+//        bottle.setIsExempt(true);
         bottle.setIsImport(true);
 
         Assert.assertEquals(54.65, bottle.getPrice()+Receipt.taxesOutForItem(bottle), 0.001);
     }
+
 }
