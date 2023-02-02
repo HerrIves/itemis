@@ -1,18 +1,46 @@
 package items;
 
-public class Book implements Item{
+public class Book implements Item {
+    String name;
+    double price;
+    boolean isExempt;
+    boolean isImport;
+
     @Override
-    public long getPrice() {
-        return 0;
+    public String getName() {
+        return name;
+    }
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
-    public boolean isExempt() {
-        return false;
+    public double getPrice() {
+        return price;
+    }
+    @Override
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
-    public boolean isImported() {
-        return false;
+    public boolean getIsExempt() {
+        return isExempt;
     }
+    @Override
+    public void setIsExempt(boolean isExempt) {
+        this.isExempt = isExempt;
+    }
+
+    @Override
+    public boolean getIsImported() {
+        return isImport;
+    }
+    @Override
+    public void setIsImport(boolean isImport) {
+        this.isImport = isImport;
+    }
+
+
 }

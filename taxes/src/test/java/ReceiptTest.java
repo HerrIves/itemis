@@ -8,6 +8,8 @@ public class ReceiptTest {
     @Test
     public void receiptOutShouldBeEqualToInput(){
         Item item = new Book();
-        Assert.assertEquals(0, Receipt.outTaxesForEachItem(item), 0.001);
+        item.setPrice(10);
+
+        Assert.assertEquals(0, Receipt.taxesOutForItem(item), 0.001);
     }
 }
