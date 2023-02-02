@@ -14,6 +14,6 @@ public class ShoppingCard {
     }
 
     public Map<Item, Integer> getBasked() {
-        return Collections.unmodifiableMap(basked);
+        return Collections.<Item, Integer>unmodifiableMap(basked);
     }
 }
