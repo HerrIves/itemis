@@ -9,6 +9,6 @@ public class ShoppingCardTest {
     public void isBaskedExist(){
         ShoppingCard card = new ShoppingCard();
 
-        Assert.assertTrue(card.getBascked() != null);
+        Assert.assertTrue(card.getBasked() != null);
     }
 }
