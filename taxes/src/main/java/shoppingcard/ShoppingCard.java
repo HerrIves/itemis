@@ -16,4 +16,8 @@ public class ShoppingCard {
     public Map<Item, Integer> getBasked() {
         return Collections.<Item, Integer>unmodifiableMap(basked);
     }
+
+    public void addItem(Item item){
+        basked.compute(item, (key, value) -> value == null ? 1 : (value + 1));
+    }
 }

@@ -18,7 +18,10 @@ public class ShoppingCardTest {
     public void addItemTest(){
         ShoppingCard card = new ShoppingCard();
         Item item = new Book();
-        card.addItem(book);
+        card.addItem(item);
+        card.addItem(item);
+
+        System.out.println(card.getBasked());
 
         Assert.assertTrue(card.getBasked().containsKey(item));
     }
