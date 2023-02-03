@@ -1,4 +1,4 @@
-# itemis
+# Receipt
 
 Hi there!
 
