@@ -28,8 +28,7 @@ public class TaxesTest {
 
     @Test
     public void taxesForImportedBottleTest(){
-        ImportedBottle bottle = new ImportedBottle();
-        bottle.setPrice(47.50);
+        ImportedBottle bottle = new ImportedBottle("chanel no 5", 47.50);
 //        bottle.setIsExempt(true);
         bottle.setIsImport(true);
 
