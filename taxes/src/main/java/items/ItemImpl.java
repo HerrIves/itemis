@@ -19,7 +19,7 @@ public abstract class ItemImpl implements Item{
     }
     @Override
     public void setName(String name) {
-        this.name = name;
+//        this.name = name;
     }
 
     @Override
@@ -28,7 +28,7 @@ public abstract class ItemImpl implements Item{
     }
     @Override
     public void setPrice(double price) {
-        this.price = price;
+//        this.price = price;
     }
 
     @Override
