@@ -17,7 +17,7 @@ public class ShoppingCardTest {
     @Test
     public void addItemTest(){
         ShoppingCard card = new ShoppingCard();
-        Item item = new Book();
+        Item item = new Book("am westen nichts neues", 12.49);
         card.addItem(item);
         card.addItem(item);
 
