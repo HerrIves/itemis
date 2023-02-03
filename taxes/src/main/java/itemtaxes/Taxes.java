@@ -5,10 +5,13 @@ import items.Item;
 import java.util.function.Predicate;
 
 public class Taxes {
+    private static final double BASIC_TAX = 0.1;
+    private static final double IMPORT_TAX = 0.05;
+
     public static double taxesOutForItem(Item item){
         double taxes = 0;
-        if ( ! item.getIsExempt()) taxes += item.getPrice()*0.1;
-        if (item.getIsImported())  taxes += item.getPrice()*0.05;
+        if ( ! item.getIsExempt()) taxes += item.getPrice() * BASIC_TAX;
+        if (item.getIsImported())  taxes += item.getPrice() * IMPORT_TAX;
 
         return roundTaxes(taxes);
     }

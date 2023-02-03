@@ -5,7 +5,6 @@ import shoppingcard.ShoppingCard;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import static itemtaxes.Taxes.taxesOutForItem;
 
 public class Receipt {
