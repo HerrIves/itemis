@@ -5,7 +5,7 @@ import items.Item;
 import java.util.function.Predicate;
 
 public class Taxes {
-    private static final double BASIC_TAX = 0.1;
+    private static final double BASIC_TAX = 0.10;
     private static final double IMPORT_TAX = 0.05;
 
     public static double taxesOutForItem(Item item){
