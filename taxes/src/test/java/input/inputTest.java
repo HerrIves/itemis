@@ -24,12 +24,12 @@ public class inputTest {
     public void toPartitionTest(){
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
-        input.toPartitions();
+        input.splitInputStrLine();
 
-        Assert.assertEquals(3, input.inputSplitList.size());
-        Assert.assertEquals("2", input.inputSplitList.get(0));
-        Assert.assertEquals("imported test book", input.inputSplitList.get(1));
-        Assert.assertEquals("12.49", input.inputSplitList.get(2));
+        Assert.assertEquals(3, input.inputSplitArr.size());
+        Assert.assertEquals("2", input.inputSplitArr.get(0));
+        Assert.assertEquals("imported test book", input.inputSplitArr.get(1));
+        Assert.assertEquals("12.49", input.inputSplitArr.get(2));
     }
 
 
@@ -38,9 +38,17 @@ public class inputTest {
     public void quantityProcessTest(){
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
-        input.toPartitions();
-        input.quantityProcess();
+        input.splitInputStrLine();
+        input.processQuantity();
 
         Assert.assertEquals(2, input.items.length);
+    }
+
+    @Test
+    public void  priceProcessTest(){
+        Input input = new Input();
+        input.inputStrLine = "2 imported test book at 12.49";
+        input.splitInputStrLine();
+        input.processQuantity();
     }
 }

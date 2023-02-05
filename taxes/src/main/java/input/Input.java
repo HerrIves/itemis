@@ -1,33 +1,38 @@
 package input;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+
 import items.Item;
+import shoppingcard.ShoppingCard;
 
 
 public class Input {
     String inputStrLine;
-    List<String> inputSplitList;
+    String[] inputSplitArr;
     Item[]items;
 
 
-    public Item[] proceed(String inputStrLine) {
+    public ShoppingCard proceed(String inputStrLine) {
 
         this.inputStrLine = inputStrLine;
 
-        Item[] items = toPartitions()
-                .quantityProcess()
-                .priceProcess()
-                .importProcess()
-                .exemptProcessWithChatGPT()
+        Item[] items = splitInputStrLine()
+                .processQuantity()
+                .processPrice()
+                .processImport()
+                .processExemptWithChatGPT()
                 .returnReadyItems();
 
-        return items;
+        ShoppingCard card = new ShoppingCard();
+        Arrays.stream(items)
+                .forEach(card::addItem);            //change to collect
+        return card;
+
     }
 
-    public Input toPartitions() {
+    public Input splitInputStrLine() {
 
-        inputSplitList = new ArrayList<>();
+        inputSplitArr = new String[3];
 
         String quantity = inputStrLine.substring(0, inputStrLine.indexOf(" "));
 
@@ -36,15 +41,15 @@ public class Input {
         CharSequence nameWithAt = inputStrLine.subSequence(inputStrLine.indexOf(" "), inputStrLine.lastIndexOf(" "));
         String name = nameWithAt.subSequence(0, nameWithAt.length()-2).toString().trim();
 
-        inputSplitList.add(quantity);
-        inputSplitList.add(name);
-        inputSplitList.add(price);
+        inputSplitArr[0] = quantity;
+        inputSplitArr[1] = name;
+        inputSplitArr[2] = price;
 
         return this;
     }
 
-    public Input quantityProcess(){
-        String quantity = inputSplitList.get(0);
+    public Input processQuantity(){
+        String quantity = inputSplitArr[0];
         Integer quantityInt = Integer.parseInt(quantity);
 
         items = new Item[quantityInt];
@@ -56,15 +61,15 @@ public class Input {
         return this.items;
     }
 
-    public Input exemptProcessWithChatGPT() {
+    public Input processExemptWithChatGPT() {
         return this;
     }
 
-    public Input importProcess() {
+    public Input processImport() {
         return this;
     }
 
-    public Input priceProcess() {
+    public Input processPrice() {
         return this;
     }
 
