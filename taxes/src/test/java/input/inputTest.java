@@ -52,6 +52,6 @@ public class inputTest {
         input.processQuantity();
         input.processPrice();
 
-        Assert.assertEquals(12.49, input.);
+        Assert.assertEquals(12.49, input.items[0].getPrice(), 0.001);
     }
 }
