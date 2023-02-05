@@ -1,11 +1,9 @@
 package input;
 
-import items.Book;
-import items.Item;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
+import items.Book;
+
 
 public class inputTest {
     Input input;
@@ -26,8 +24,8 @@ public class inputTest {
     @Test
     public void partitionTest(){
         Input input = new Input();
-        input.inputString = "1 imported test book at 12.49";
-        input.toPartition();
+        input.inputStrLine = "1 imported test book at 12.49";
+        input.toPartitions();
 
         Assert.assertEquals(3, input.inputToList.size());
     }
