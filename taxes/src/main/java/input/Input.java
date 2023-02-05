@@ -7,27 +7,27 @@ import items.Item;
 
 public class Input {
     String inputStrLine;
-    List<String> inputToList;
-    Item item;
+    List<String> inputSplitList;
+    Item[]items;
 
 
-    public Item proceed(String inputStrLine) {
+    public Item[] proceed(String inputStrLine) {
 
         this.inputStrLine = inputStrLine;
 
-        Item item = toPartitions()
-                .inputQuantityProcess()
-                .inputPriceProcess()
-                .inputImportProcess()
-                .inputExempWithChatGPTProcess()
-                .returnReadyItem();
+        Item[] items = toPartitions()
+                .quantityProcess()
+                .priceProcess()
+                .importProcess()
+                .exemptProcessWithChatGPT()
+                .returnReadyItems();
 
-        return item;
+        return items;
     }
 
     public Input toPartitions() {
 
-        inputToList = new ArrayList<>();
+        inputSplitList = new ArrayList<>();
 
         String quantity = inputStrLine.substring(0, inputStrLine.indexOf(" "));
 
@@ -37,30 +37,30 @@ public class Input {
     String name = nameWithAt.subSequence(0, nameWithAt.length()-2).toString().trim();
 
 
-        inputToList.add(quantity);
-        inputToList.add(name);
-        inputToList.add(price);
+        inputSplitList.add(quantity);
+        inputSplitList.add(name);
+        inputSplitList.add(price);
 
         return this;
     }
 
-    public Item returnReadyItem() {
-        return this.item;
-    }
-
-    public Input inputExempWithChatGPTProcess() {
+    public Input quantityProcess() {
         return this;
     }
 
-    public Input inputImportProcess() {
+    public Item[] returnReadyItems() {
+        return this.items;
+    }
+
+    public Input exemptProcessWithChatGPT() {
         return this;
     }
 
-    public Input inputPriceProcess() {
+    public Input importProcess() {
         return this;
     }
 
-    public Input inputQuantityProcess() {
+    public Input priceProcess() {
         return this;
     }
 

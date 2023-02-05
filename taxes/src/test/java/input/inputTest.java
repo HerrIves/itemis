@@ -22,16 +22,14 @@ public class inputTest {
     }
 
     @Test
-    public void partitionTest(){
+    public void toPartitionTest(){
         Input input = new Input();
         input.inputStrLine = "1 imported test book at 12.49";
         input.toPartitions();
 
-        Assert.assertEquals(3, input.inputToList.size());
-        Assert.assertEquals("1", input.inputToList.get(0));
-        Assert.assertEquals("imported test book", input.inputToList.get(1));
-        Assert.assertEquals("12.49", input.inputToList.get(2));
-
-
+        Assert.assertEquals(3, input.inputSplitList.size());
+        Assert.assertEquals("1", input.inputSplitList.get(0));
+        Assert.assertEquals("imported test book", input.inputSplitList.get(1));
+        Assert.assertEquals("12.49", input.inputSplitList.get(2));
     }
 }
