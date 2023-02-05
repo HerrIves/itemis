@@ -34,8 +34,7 @@ public class Input {
         String price = inputStrLine.substring(inputStrLine.lastIndexOf(" ")).trim();
 
         CharSequence nameWithAt = inputStrLine.subSequence(inputStrLine.indexOf(" "), inputStrLine.lastIndexOf(" "));
-    String name = nameWithAt.subSequence(0, nameWithAt.length()-2).toString().trim();
-
+        String name = nameWithAt.subSequence(0, nameWithAt.length()-2).toString().trim();
 
         inputSplitList.add(quantity);
         inputSplitList.add(name);
@@ -44,7 +43,12 @@ public class Input {
         return this;
     }
 
-    public Input quantityProcess() {
+    public Input quantityProcess(){
+        String quantity = inputSplitList.get(0);
+        Integer quantityInt = Integer.parseInt(quantity);
+
+        items = new Item[quantityInt];
+
         return this;
     }
 
