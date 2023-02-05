@@ -1,6 +1,7 @@
 package input;
 
 import java.util.Arrays;
+import java.util.Map;
 
 import items.Item;
 import shoppingcard.ShoppingCard;
@@ -23,6 +24,7 @@ public class Input {
                 .processExemptWithChatGPT()
                 .returnReadyItems();
 
+
         ShoppingCard card = new ShoppingCard();
         Arrays.stream(items)
                 .forEach(card::addItem);            //change to collect
@@ -38,8 +40,8 @@ public class Input {
 
         String price = inputStrLine.substring(inputStrLine.lastIndexOf(" ")).trim();
 
-        CharSequence nameWithAt = inputStrLine.subSequence(inputStrLine.indexOf(" "), inputStrLine.lastIndexOf(" "));
-        String name = nameWithAt.subSequence(0, nameWithAt.length()-2).toString().trim();
+        String nameWithAt = inputStrLine.substring(inputStrLine.indexOf(" "), inputStrLine.lastIndexOf(" "));
+        String name = nameWithAt.substring(0, nameWithAt.length()-2).trim();
 
         inputSplitArr[0] = quantity;
         inputSplitArr[1] = name;

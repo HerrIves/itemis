@@ -50,5 +50,8 @@ public class inputTest {
         input.inputStrLine = "2 imported test book at 12.49";
         input.splitInputStrLine();
         input.processQuantity();
+        input.processPrice();
+
+        Assert.assertEquals(12.49, input.);
     }
 }
