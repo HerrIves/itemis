@@ -2,11 +2,13 @@ package input;
 
 import items.Item;
 
+import java.util.List;
+
 
 public class Input {
-    String[] inputArr;
+    List<String> inputToList;
 
-    public Item inputLine(String input) {
+    public Item proceed(String input) {
 
         Item item = inputPatipion(input)
                 .inputQuantityProcess()
@@ -18,6 +20,6 @@ public class Input {
         return item;
     }
 
-    public static Input readLine(){}
+//    public static Input readLine(){}
 }
 
