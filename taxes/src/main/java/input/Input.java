@@ -59,6 +59,12 @@ public class Input {
         return this;
     }
 
+    public Input processPrice() {
+        double price = Double.parseDouble(inputSplitArr[2]);
+
+        return this;
+    }
+
     public Item[] returnReadyItems() {
         return this.items;
     }
@@ -68,10 +74,6 @@ public class Input {
     }
 
     public Input processImport() {
-        return this;
-    }
-
-    public Input processPrice() {
         return this;
     }
 

@@ -2,12 +2,14 @@ package items;
 
 import java.util.Objects;
 
-
 public abstract class ItemImpl implements Item{
-    final String name;
-    final double price;
+    String name;
+    double price;
     boolean isExempt;
     boolean isImport;
+
+    public ItemImpl() {
+    }
 
     public ItemImpl(String name, double price) {
         this.name = name;
@@ -18,11 +20,13 @@ public abstract class ItemImpl implements Item{
     public String getName() {
         return name;
     }
+    public void setName(String name) {        this.name = name;    }
 
     @Override
     public double getPrice() {
         return price;
     }
+    public void setPrice(double price) {        this.price = price;    }
 
     @Override
     public boolean getIsExempt() {
