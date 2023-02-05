@@ -6,7 +6,6 @@ import items.Book;
 
 
 public class inputTest {
-    Input input;
 
 
     @Test
@@ -24,12 +23,24 @@ public class inputTest {
     @Test
     public void toPartitionTest(){
         Input input = new Input();
-        input.inputStrLine = "1 imported test book at 12.49";
+        input.inputStrLine = "2 imported test book at 12.49";
         input.toPartitions();
 
         Assert.assertEquals(3, input.inputSplitList.size());
-        Assert.assertEquals("1", input.inputSplitList.get(0));
+        Assert.assertEquals("2", input.inputSplitList.get(0));
         Assert.assertEquals("imported test book", input.inputSplitList.get(1));
         Assert.assertEquals("12.49", input.inputSplitList.get(2));
+    }
+
+
+
+    @Test
+    public void quantityProcessTest(){
+        Input input = new Input();
+        input.inputStrLine = "2 imported test book at 12.49";
+        input.toPartitions();
+        input.quantityProcess();
+
+        Assert.assertEquals(2, input.items.length);
     }
 }
