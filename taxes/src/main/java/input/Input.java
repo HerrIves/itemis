@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import items.Item;
+import items.UnknownItem;
 import shoppingcard.ShoppingCard;
 
 
@@ -61,6 +62,8 @@ public class Input {
 
     public Input processPrice() {
         double price = Double.parseDouble(inputSplitArr[2]);
+        Item item =  new UnknownItem();
+
 
         return this;
     }
