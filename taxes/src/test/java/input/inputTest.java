@@ -27,7 +27,8 @@ public class inputTest {
     public void partitionTest(){
         Input input = new Input();
         input.inputString = "1 imported test book at 12.49";
+        input.toPartition();
 
-        Assert.assertEquals(3, input.toPartition().lenght());
+        Assert.assertEquals(3, input.inputToList.size());
     }
 }
