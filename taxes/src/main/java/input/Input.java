@@ -30,8 +30,12 @@ public class Input {
         inputToList = new ArrayList<>();
 
         String quantity = inputStrLine.substring(0, inputStrLine.indexOf(" "));
-        String price = inputStrLine.substring(inputStrLine.lastIndexOf(" "));
-        String  name = inputStrLine.substring(inputStrLine.indexOf(" "), inputStrLine.lastIndexOf(" "));
+
+        String price = inputStrLine.substring(inputStrLine.lastIndexOf(" ")).trim();
+
+        CharSequence nameWithAt = inputStrLine.subSequence(inputStrLine.indexOf(" "), inputStrLine.lastIndexOf(" "));
+    String name = nameWithAt.subSequence(0, nameWithAt.length()-2).toString().trim();
+
 
         inputToList.add(quantity);
         inputToList.add(name);

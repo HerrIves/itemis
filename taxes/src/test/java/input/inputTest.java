@@ -28,5 +28,10 @@ public class inputTest {
         input.toPartitions();
 
         Assert.assertEquals(3, input.inputToList.size());
+        Assert.assertEquals("1", input.inputToList.get(0));
+        Assert.assertEquals("imported test book", input.inputToList.get(1));
+        Assert.assertEquals("12.49", input.inputToList.get(2));
+
+
     }
 }
