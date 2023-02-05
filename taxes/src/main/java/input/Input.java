@@ -6,11 +6,14 @@ import java.util.List;
 
 
 public class Input {
+    String inputString;
     List<String> inputToList;
 
-    public Item proceed(String input) {
+    public Item proceed(String inputString) {
 
-        Item item = inputPatipion(input)
+        this.inputString = inputString;
+
+        Item item = toPartipion()
                 .inputQuantityProcess()
                 .inputPriceProcess()
                 .inputImportProcess()
