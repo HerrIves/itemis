@@ -1,82 +1,75 @@
 package input;
 
-import java.util.Arrays;
-import java.util.Map;
-
 import items.Item;
 import items.UnknownItem;
+import lombok.Data;
 import shoppingcard.ShoppingCard;
 
-
+@Data
 public class Input {
     String inputStrLine;
-    String[] inputSplitArr;
-    Item[]items;
+
+    private int quantity;
+    private String name;
+    private double price;
+    private boolean isImport, isExempt;
+
 
 
     public ShoppingCard proceed(String inputStrLine) {
 
-        this.inputStrLine = inputStrLine;
+                this.inputStrLine = inputStrLine;
 
-        Item[] items = splitInputStrLine()
-                .processQuantity()
-                .processPrice()
-                .processImport()
-                .processExemptWithChatGPT()
-                .returnReadyItems();
+                return new ShoppingCard().addItem(
+                        Input.this
+                                .processName()
+                                .processQuantity()
+                                .processPrice()
+                                .processImport()
+                                .processExemptWithChatGPT()
+                                .buildItem()
 
-
-        ShoppingCard card = new ShoppingCard();
-        Arrays.stream(items)
-                .forEach(card::addItem);            //change to collect
-        return card;
+                                ,quantity);
 
     }
 
-    public Input splitInputStrLine() {
+    private Item buildItem() {
+        Item item = new UnknownItem();
+        item.setName(this.name);
+        item.setPrice(price);
 
-        inputSplitArr = new String[3];
+        return item;
+    }
 
-        String quantity = inputStrLine.substring(0, inputStrLine.indexOf(" "));
-
-        String price = inputStrLine.substring(inputStrLine.lastIndexOf(" ")).trim();
-
+    public Input processName() {
         String nameWithAt = inputStrLine.substring(inputStrLine.indexOf(" "), inputStrLine.lastIndexOf(" "));
-        String name = nameWithAt.substring(0, nameWithAt.length()-2).trim();
-
-        inputSplitArr[0] = quantity;
-        inputSplitArr[1] = name;
-        inputSplitArr[2] = price;
+        name = nameWithAt.substring(0, nameWithAt.length()-2).trim();
 
         return this;
     }
 
     public Input processQuantity(){
-        String quantity = inputSplitArr[0];
-        Integer quantityInt = Integer.parseInt(quantity);
-
-        items = new Item[quantityInt];
+        String quantityStr = inputStrLine.substring(0, inputStrLine.indexOf(" "));
+        quantity = Integer.parseInt(quantityStr);
 
         return this;
     }
 
     public Input processPrice() {
-        double price = Double.parseDouble(inputSplitArr[2]);
-        Item item =  new UnknownItem();
+        String priceStr = inputStrLine.substring(inputStrLine.lastIndexOf(" ")).trim();
+        price = Double.parseDouble(priceStr);
 
-
-        return this;
-    }
-
-    public Item[] returnReadyItems() {
-        return this.items;
-    }
-
-    public Input processExemptWithChatGPT() {
         return this;
     }
 
     public Input processImport() {
+        if (name.contains("imported"))
+            this.setImport(true);
+
+        return this;
+    }
+
+    public Input processExemptWithChatGPT() {
         return this;
     }
 

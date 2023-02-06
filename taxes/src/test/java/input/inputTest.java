@@ -2,7 +2,6 @@ package input;
 
 import org.junit.Assert;
 import org.junit.Test;
-import items.Book;
 
 
 public class inputTest {
@@ -24,7 +23,7 @@ public class inputTest {
     public void toPartitionTest(){
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
-        input.splitInputStrLine();
+        input.processName();
 
         Assert.assertEquals(3, input.inputSplitArr.length);
         Assert.assertEquals("2", input.inputSplitArr[0]);
@@ -38,7 +37,7 @@ public class inputTest {
     public void quantityProcessTest(){
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
-        input.splitInputStrLine();
+        input.processName();
         input.processQuantity();
 
         Assert.assertEquals(2, input.items.length);
@@ -48,7 +47,7 @@ public class inputTest {
     public void  priceProcessTest(){
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
-        input.splitInputStrLine();
+        input.processName();
         input.processQuantity();
         input.processPrice();
 

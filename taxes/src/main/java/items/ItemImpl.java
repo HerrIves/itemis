@@ -20,13 +20,19 @@ public abstract class ItemImpl implements Item{
     public String getName() {
         return name;
     }
-    public void setName(String name) {        this.name = name;    }
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public double getPrice() {
         return price;
     }
-    public void setPrice(double price) {        this.price = price;    }
+    @Override
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     @Override
     public boolean getIsExempt() {
