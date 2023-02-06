@@ -20,37 +20,31 @@ public class inputTest {
 //    }
 
     @Test
-    public void toPartitionTest(){
+    public void processNameTest(){
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
         input.processName();
 
-        Assert.assertEquals(3, input.inputSplitArr.length);
-        Assert.assertEquals("2", input.inputSplitArr[0]);
-        Assert.assertEquals("imported test book", input.inputSplitArr[1]);
-        Assert.assertEquals("12.49", input.inputSplitArr[2]);
+        Assert.assertEquals("imported test book", input.getName());
     }
 
 
 
     @Test
-    public void quantityProcessTest(){
+    public void processQuantityTest(){
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
-        input.processName();
         input.processQuantity();
 
-        Assert.assertEquals(2, input.items.length);
+        Assert.assertEquals(2, input.getQuantity());
     }
 
     @Test
     public void  priceProcessTest(){
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
-        input.processName();
-        input.processQuantity();
         input.processPrice();
 
-        Assert.assertEquals(12.49, input.items[0].getPrice(), 0.001);
+        Assert.assertEquals(12.49, input.getPrice(), 0.001);
     }
 }

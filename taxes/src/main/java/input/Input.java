@@ -33,7 +33,7 @@ public class Input {
 
     }
 
-    private Item buildItem() {
+    public Item buildItem() {
         Item item = new UnknownItem();
         item.setName(this.name);
         item.setPrice(price);

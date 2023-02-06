@@ -20,4 +20,9 @@ public class ShoppingCard {
     public void addItem(Item item){
         basked.compute(item, (key, value) -> value == null ? 1 : (value + 1));
     }
+
+    public ShoppingCard addItem(Item item, int quantity) {
+        basked.put(item, quantity);
+        return this;
+    }
 }
