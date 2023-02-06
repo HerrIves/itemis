@@ -6,12 +6,45 @@ import items.UnknownItem;
 import org.junit.Assert;
 import org.junit.Test;
 import shoppingcard.ShoppingCard;
+import shoppingreceipt.Receipt;
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
-public class inputTest {
+public class InputTest {
+    @Test
+    public void readLinesTest(){
+
+        String inputLines = "1 imported test book at 12.49";
+
+        System.setIn();
+
+        List<String> lines = Input.readLines();
+
+        HashMap<Item, Integer> basket = lines.parallelStream()
+                .map(new Input()::proceed)
+                .flatMap(card -> card.getBasked().entrySet().stream())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum, HashMap::new));
+
+        ShoppingCard card = new ShoppingCard(basket);
+
+
+        PrintStream out = new PrintStream(new ByteArrayOutputStream());
+        System.setOut(out);
+
+        new Receipt(card).output();
+
+        Assert.assertEquals();
+
+    }
 
 
     @Test
