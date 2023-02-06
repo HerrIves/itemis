@@ -38,11 +38,20 @@ public class inputTest {
     }
 
     @Test
-    public void  priceProcessTest(){
+    public void processPriceTest(){
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
         input.processPrice();
 
         Assert.assertEquals(12.49, input.getPrice(), 0.001);
+    }
+
+    @Test
+    public void processImport(){
+        Input input = new Input();
+        input.inputStrLine = "2 imported test book at 12.49";
+        input.processImport();
+
+        Assert.assertEquals(true, input.isImport());
     }
 }

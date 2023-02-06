@@ -2,10 +2,8 @@ package input;
 
 import items.Item;
 import items.UnknownItem;
-import lombok.Data;
 import shoppingcard.ShoppingCard;
 
-@Data
 public class Input {
     String inputStrLine;
 
@@ -15,6 +13,17 @@ public class Input {
     private boolean isImport, isExempt;
 
 
+    public int getQuantity() {        return quantity;    }
+    public void setQuantity(int quantity) {        this.quantity = quantity;    }
+
+    public String getName() {        return name;    }
+    public void setName(String name) {        this.name = name;    }
+    public double getPrice() {        return price;    }
+    public void setPrice(double price) {        this.price = price;    }
+    public boolean isImport() {        return isImport;    }
+    public void setImport(boolean anImport) {        isImport = anImport;    }
+    public boolean isExempt() {        return isExempt;    }
+    public void setExempt(boolean exempt) {        isExempt = exempt;    }
 
     public ShoppingCard proceed(String inputStrLine) {
 
@@ -65,8 +74,8 @@ public class Input {
     }
 
     public Input processImport() {
-        if (name.contains("imported"))
-            this.setImport(true);
+        if (inputStrLine.contains("imported"))
+            this.isImport = true;
 
         return this;
     }
