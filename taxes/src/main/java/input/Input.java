@@ -35,7 +35,7 @@ public class Input {
                                 .processQuantity()
                                 .processPrice()
                                 .processImport()
-                                .processExemptWithChatGPT()
+                                .processExemptWithChadGTP()
                                 .buildItem()
 
                                 ,quantity);
@@ -80,7 +80,7 @@ public class Input {
         return this;
     }
 
-    public Input processExemptWithChatGPT() {
+    public Input processExemptWithChadGTP() {
         this.setExempt(true);
         return this;
     }
