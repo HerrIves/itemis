@@ -28,8 +28,6 @@ public class inputTest {
         Assert.assertEquals("imported test book", input.getName());
     }
 
-
-
     @Test
     public void processQuantityTest(){
         Input input = new Input();

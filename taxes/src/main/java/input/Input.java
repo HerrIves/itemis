@@ -35,8 +35,10 @@ public class Input {
 
     public Item buildItem() {
         Item item = new UnknownItem();
-        item.setName(this.name);
+        item.setName(name);
         item.setPrice(price);
+        item.setIsImport(isImport);
+        item.setIsExempt(isExempt);
 
         return item;
     }
@@ -70,11 +72,9 @@ public class Input {
     }
 
     public Input processExemptWithChatGPT() {
+        this.setExempt(true);
         return this;
     }
 
-
-
-//    public static Input readLine(){}
 }
 
