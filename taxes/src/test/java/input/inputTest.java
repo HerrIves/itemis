@@ -54,4 +54,13 @@ public class inputTest {
 
         Assert.assertEquals(true, input.isImport());
     }
+
+    @Test
+    public void processExemptTest(){
+        Input input = new Input();
+        input.inputStrLine = "2 imported test book at 12.49";
+        input.processImport();
+
+        Assert.assertEquals(true, input.isExempt());
+    }
 }
