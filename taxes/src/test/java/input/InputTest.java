@@ -1,7 +1,10 @@
 package input;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,36 +24,24 @@ import org.junit.Test;
 public class InputTest {
     @Test
     public void readLinesTest(){
+        InputStream consoleIn = System.in;
+        PrintStream consoleOut = System.out;
 
-        String inputLine1 = "1 test book at 12.49";
-        String inputLine2 = "1  music CD at 14.99";
-        String inputLine3 = "1 chocolate bar at 0.85";
-        String outLines = "";
+        StringBuffer inputStringBuffer = new StringBuffer()
+                .append("1 test book at 12.49\n")
+                .append("1  music CD at 14.99\n")
+                .append("1 chocolate bar at 0.85\n");
+        System.setIn(new ByteArrayInputStream(inputStringBuffer.toString().getBytes(StandardCharsets.UTF_8)));
 
-//        System.setIn();
-
-        List<String> lines = Input.readLines();
-
-        HashMap<Item, Integer> basket = lines.parallelStream()
-                .map(new Input()::proceed)
-                .flatMap(card -> card.getBasked().entrySet().stream())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum, HashMap::new));
-
-        ShoppingCard card = new ShoppingCard(basket);
+        List<String> lines = Input.readLines(SystemInOut.getInput);
 
 
-        PrintStream out = new PrintStream(new ByteArrayOutputStream());
-        System.setOut(out);
-
-        new Receipt(card).output();
-
-        Assert.assertEquals();
 
     }
 
 
     @Test
-    public void inputTest(){
+    public void proceedTest(){
         Item item = new UnknownItem();
         item.setName("imported test book");
         item.setPrice(12.49);
