@@ -1,0 +1,12 @@
+
+
+        HashMap<Item, Integer> basket = lines.parallelStream()
+                .map(new Input()::proceed)
+                .flatMap(card -> card.getBasked().entrySet().stream())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum, HashMap::new));
+
+        ShoppingCard card = new ShoppingCard(basket);
+
+        new Receipt(card).output();
+
+        Assert.assertEquals();

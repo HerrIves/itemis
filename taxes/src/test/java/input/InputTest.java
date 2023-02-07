@@ -1,20 +1,16 @@
 package input;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import items.Item;
 import items.UnknownItem;
 import shoppingcard.ShoppingCard;
-import shoppingreceipt.Receipt;
 
 
 import org.junit.Assert;
@@ -33,10 +29,9 @@ public class InputTest {
                 .append("1 chocolate bar at 0.85\n");
         System.setIn(new ByteArrayInputStream(inputStringBuffer.toString().getBytes(StandardCharsets.UTF_8)));
 
-        List<String> lines = Input.readLines(SystemInOut.getInput);
+        List<String> lines = Input.readLines(System.in);
 
-
-
+        Assert.assertEquals(null, lines);
     }
 
 

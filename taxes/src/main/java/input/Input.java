@@ -4,13 +4,21 @@ import items.Item;
 import items.UnknownItem;
 import shoppingcard.ShoppingCard;
 
+import java.io.InputStream;
+import java.util.List;
+
 public class Input {
+
     String inputStrLine;
 
     private int quantity;
     private String name;
     private double price;
     private boolean isImport, isExempt;
+
+    public static List<String> readLines(InputStream in) {
+        return null;
+    }
 
 
     public ShoppingCard proceed(String inputStrLine) {
