@@ -1,16 +1,6 @@
 package input;
 
-import items.Book;
-import items.Item;
-import items.UnknownItem;
-import org.junit.Assert;
-import org.junit.Test;
-import shoppingcard.ShoppingCard;
-import shoppingreceipt.Receipt;
-
-import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.List;
@@ -18,14 +8,26 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import items.Item;
+import items.UnknownItem;
+import shoppingcard.ShoppingCard;
+import shoppingreceipt.Receipt;
+
+
+import org.junit.Assert;
+import org.junit.Test;
+
 
 public class InputTest {
     @Test
     public void readLinesTest(){
 
-        String inputLines = "1 imported test book at 12.49";
+        String inputLine1 = "1 test book at 12.49";
+        String inputLine2 = "1  music CD at 14.99";
+        String inputLine3 = "1 chocolate bar at 0.85";
+        String outLines = "";
 
-        System.setIn();
+//        System.setIn();
 
         List<String> lines = Input.readLines();
 
