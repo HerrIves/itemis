@@ -8,12 +8,14 @@ import java.nio.charset.StandardCharsets;
 public class StartTest {
     @Test
     public void mainTest(){
+        InputStream consoleIn = System.in;
+        PrintStream consoleOut = System.out;
 
         StringBuffer inputStringBuffer = new StringBuffer()
                 .append("1 test book at 12.49\n")
                 .append("1  music CD at 14.99\n")
                 .append("1 chocolate bar at 0.85\n");
-        ByteArrayInputStream in = new ByteArrayInputStream(inputStringBuffer.toString().getBytes(StandardCharsets.UTF_8));
+        System.setIn(new ByteArrayInputStream(inputStringBuffer.toString().getBytes(StandardCharsets.UTF_8)));
 
 
         StringBuffer outStringBuffer = new StringBuffer()
@@ -24,11 +26,12 @@ public class StartTest {
                 .append("Total: 29.83\n");
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(byteArrayOutputStream);
+        System.setOut(new PrintStream(byteArrayOutputStream));
 
-        Input.readLines(in)
-                .proceed()
-                .getOutput(out);
+        Start.main(null);
+
+        System.setIn(consoleIn);
+        System.setOut(consoleOut);
 
         Assert.assertEquals(outStringBuffer.toString(), byteArrayOutputStream.toString());
     }
