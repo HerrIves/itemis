@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 
 public class StartTest {
     @Test
-    public void mainTest(){
+    public void mainTest() throws IOException {
         InputStream consoleIn = System.in;
         PrintStream consoleOut = System.out;
 
@@ -32,6 +32,8 @@ public class StartTest {
 
         System.setIn(consoleIn);
         System.setOut(consoleOut);
+
+        System.out.println(byteArrayOutputStream.toString());
 
         Assert.assertEquals(outStringBuffer.toString(), byteArrayOutputStream.toString());
     }

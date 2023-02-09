@@ -1,12 +1,11 @@
 package input;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import items.Item;
 import items.UnknownItem;
@@ -19,7 +18,7 @@ import org.junit.Test;
 
 public class InputTest {
     @Test
-    public void readLinesTest(){
+    public void readLinesTest() throws IOException {
         InputStream consoleIn = System.in;
         PrintStream consoleOut = System.out;
 
@@ -30,8 +29,12 @@ public class InputTest {
         System.setIn(new ByteArrayInputStream(inputStringBuffer.toString().getBytes(StandardCharsets.UTF_8)));
 
         List<String> lines = Input.readLines(System.in);
+        List<String> testLines = new ArrayList<>();
+        testLines.add("1 test book at 12.49");
+        testLines.add("1  music CD at 14.99");
+        testLines.add("1 chocolate bar at 0.85");
 
-        Assert.assertEquals(null, lines);
+        Assert.assertEquals(testLines, lines);
     }
 
 

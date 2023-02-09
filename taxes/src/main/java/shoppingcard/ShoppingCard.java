@@ -13,6 +13,10 @@ public class ShoppingCard {
         basked = new HashMap<>();
     }
 
+    public ShoppingCard(Map<Item, Integer> basket) {
+        this.basked = basket;
+    }
+
     public Map<Item, Integer> getBasked() {
         return Collections.unmodifiableMap(basked);
     }
