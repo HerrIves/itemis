@@ -7,10 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Input {
@@ -35,12 +32,12 @@ public class Input {
     }
 
     public static Map<Item, Integer> proceedAll(List<String> inputStrings) {
-        Map<Item, Integer> resultBucket = new HashMap<Item, Integer>();
+        Map<Item, Integer> resultBucket;
 
         resultBucket = inputStrings.stream()
                 .map(new Input()::proceed)
                 .flatMap(oneItemBucket -> oneItemBucket.entrySet().stream())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum, HashMap::new));
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum, LinkedHashMap::new));
 
 
         return resultBucket;

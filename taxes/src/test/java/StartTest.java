@@ -19,7 +19,7 @@ public class StartTest {
 
 
         StringBuffer outStringBuffer = new StringBuffer()
-                .append("1 book: 12.49\n")
+                .append("1 test book: 12.49\n")
                 .append("1 music CD: 16.49\n")
                 .append("1 chocolate bar: 0.85\n")
                 .append("Sales Taxes: 1.50\n")
