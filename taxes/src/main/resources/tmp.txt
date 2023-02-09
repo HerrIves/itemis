@@ -10,3 +10,6 @@
         new Receipt(card).output();
 
         Assert.assertEquals();
+
+                        .append("1 imported box of chocolates at 10.00\n")
+                        .append("1 imported bottle of perfume at 47.50\n")

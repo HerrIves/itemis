@@ -18,7 +18,6 @@ import org.junit.Test;
 public class InputTest {
     public InputStream testInputStream1;
     public InputStream testInputStream2;
-    public InputStream testInputStream3;
 
 
     @Before
@@ -34,12 +33,11 @@ public class InputTest {
     @Before
     public void prepareInputData2() {
         byte[] testInputBytes = new StringBuffer()
-                .append("1 test book at 12.49\n")
-                .append("1  music CD at 14.99\n")
-                .append("1 chocolate bar at 0.85\n")
+                .append("1 imported box of chocolates at 10.00\n")
+                .append("1 imported bottle of perfume at 47.50\n")
                 .toString()
                 .getBytes(StandardCharsets.UTF_8);
-        testInputStream1 = new ByteArrayInputStream(testInputBytes);
+        testInputStream2 = new ByteArrayInputStream(testInputBytes);
     }
 
     @Test
@@ -57,7 +55,7 @@ public class InputTest {
 
 
     @Test
-    public void proceedAllTest() throws IOException {
+    public void proceedAllTest1() throws IOException {
         List<String> testStringList = Input.readLines(testInputStream1);
         testStringList.forEach(System.out::println);
         Map<Item, Integer> resInputBucket = Input.proceedAll(testStringList);
@@ -67,6 +65,20 @@ public class InputTest {
         expectInputBucket.put(new UnknownItem("test book", 12.49), 1);
         expectInputBucket.put(new UnknownItem("music CD", 14.99), 1);
         expectInputBucket.put(new UnknownItem("chocolate bar", 0.85), 1);
+
+
+        Assert.assertEquals(expectInputBucket, resInputBucket);
+    }
+    @Test
+    public void proceedAllTest2() throws IOException {
+        List<String> testStringList = Input.readLines(testInputStream2);
+        testStringList.forEach(System.out::println);
+        Map<Item, Integer> resInputBucket = Input.proceedAll(testStringList);
+
+
+        Map<Item ,Integer> expectInputBucket = new HashMap<>();
+        expectInputBucket.put(new UnknownItem("imported box of chocolates", 10.00), 1);
+        expectInputBucket.put(new UnknownItem("imported bottle of perfume", 47.50), 1);
 
 
         Assert.assertEquals(expectInputBucket, resInputBucket);

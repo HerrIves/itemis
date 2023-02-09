@@ -19,6 +19,16 @@ public class Input {
     private double price;
     private boolean isImport, isExempt;
 
+    static List<String> exceptions;
+
+    static {
+        exceptions = new ArrayList<>();
+        exceptions.add("book");
+        exceptions.add("pill");
+        exceptions.add("chocolate");
+    }
+
+
     public static List<String> readLines(InputStream in) throws IOException {
         List<String>lines = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -35,10 +45,9 @@ public class Input {
         Map<Item, Integer> resultBucket;
 
         resultBucket = inputStrings.stream()
-                .map(new Input()::proceed)
+                .map(itemString -> new Input().proceed(itemString))
                 .flatMap(oneItemBucket -> oneItemBucket.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum, LinkedHashMap::new));
-
 
         return resultBucket;
     }
@@ -93,19 +102,13 @@ public class Input {
     }
 
     public Input processImport() {
-        if (inputStrLine.contains("imported"))
-            this.isImport = true;
+        if (inputStrLine.contains("import"))
+            isImport = true;
 
         return this;
     }
 
     public Input processExemptWithChadGTP() {
-        List<String>exceptions = new ArrayList<>();
-        exceptions.add("book");
-        exceptions.add("pill");
-        exceptions.add("chocolate");
-        exceptions.add("chocolate");
-
         isExempt = exceptions.stream()
                 .anyMatch(exception->inputStrLine.contains(exception));
 

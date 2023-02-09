@@ -13,7 +13,6 @@ public class Start {
 
         List<String> lines = Input.readLines(System.in);
         Map<Item, Integer> resultBucket = Input.proceedAll(lines);
-
         new Receipt(new ShoppingCard(resultBucket)).output();
 
     }

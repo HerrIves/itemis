@@ -5,6 +5,8 @@ import shoppingcard.ShoppingCard;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
 import static itemtaxes.Taxes.taxesOutForItem;
 
 public class Receipt {
@@ -23,8 +25,8 @@ public class Receipt {
     public void output(){
         calculate().stream()
                 .forEach(System.out::println);
-        System.out.println(String.format("Sales Taxes: %.02f", allTaxes));
-        System.out.println(String.format("Total: %.02f", total));
+        System.out.println(String.format(Locale.ENGLISH, "Sales Taxes: %.02f", allTaxes));
+        System.out.println(String.format(Locale.ENGLISH, "Total: %.02f", total));
 
     }
 
@@ -37,7 +39,7 @@ public class Receipt {
                     Double itemTaxes = taxesOutForItem(item);
 
                     outputList.add(
-                            String.format("%d %s: %.02f", quantity,item.getName(), (item.getPrice() + itemTaxes)));
+                            String.format(Locale.ENGLISH, "%d %s: %.02f", quantity,item.getName(), (item.getPrice() + itemTaxes)));
                     allTaxes += quantity * itemTaxes;
                     total += quantity * (item.getPrice() + itemTaxes);
                 });
