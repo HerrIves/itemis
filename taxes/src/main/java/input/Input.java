@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class Input {
@@ -104,9 +103,20 @@ public class Input {
     }
 
     public Input processExemptWithChadGTP() {
+        List<String>exceptions = new ArrayList<>();
+        exceptions.add("book");
+        exceptions.add("pills");
+        exceptions.add("chocolate");
+        exceptions.add("chocolate");
+
+        exceptions.stream()
+                .anyMatch(exception->inputStrLine.contains(exception));
         this.setExempt(true);
         return this;
     }
+
+
+
 
     public int getQuantity() {        return quantity;    }
     public void setQuantity(int quantity) {        this.quantity = quantity;    }
