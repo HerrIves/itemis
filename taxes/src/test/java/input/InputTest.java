@@ -47,7 +47,9 @@ public class InputTest {
     @Test
     public void proceedAllTest() throws IOException {
         List<String> testStringList = Input.readLines(testInputStream);
+        testStringList.forEach(System.out::println);
         Map<Item, Integer> resInputBucket = Input.proceedAll(testStringList);
+
 
         Map<Item ,Integer> expectInputBucket = new HashMap<>();
         expectInputBucket.put(new UnknownItem("test book", 12.49), 1);

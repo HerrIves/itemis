@@ -2,7 +2,6 @@ package input;
 
 import items.Item;
 import items.UnknownItem;
-import shoppingcard.ShoppingCard;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class Input {
@@ -36,10 +36,13 @@ public class Input {
     }
 
     public static Map<Item, Integer> proceedAll(List<String> inputStrings) {
-        HashMap<Item, Integer> resultBucket = inputStrings.parallelStream()
+        Map<Item, Integer> resultBucket = new HashMap<Item, Integer>();
+
+        resultBucket = inputStrings.stream()
                 .map(new Input()::proceed)
                 .flatMap(oneItemBucket -> oneItemBucket.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum, HashMap::new));
+
 
         return resultBucket;
     }
