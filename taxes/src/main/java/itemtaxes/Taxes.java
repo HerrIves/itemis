@@ -19,11 +19,10 @@ public class Taxes {
     public static double roundTaxes(Double inputTaxes) {
         final long inputTaxesLong = Math.round(inputTaxes*100);
 
-//      inputTaxesLongEnding = ifInputTaxesMoreThan(7) ? 10 : ifInputTaxesMoreThan(2) ? 5 : 0;
         Predicate<Integer> ifInputTaxesMoreThan = integer -> inputTaxesLong % 10 > integer;
 
         long inputTaxesLongEnding =
-                ifInputTaxesMoreThan.test(7) ? 10 : ifInputTaxesMoreThan.test(2) ? 5  : 0;
+                ifInputTaxesMoreThan.test(5) ? 10 : ifInputTaxesMoreThan.test(0) ? 5 : 0;
 
         return ((double) (inputTaxesLong / 10 * 10 + inputTaxesLongEnding)) / 100;
     }
