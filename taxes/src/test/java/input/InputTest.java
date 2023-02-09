@@ -47,25 +47,23 @@ public class InputTest {
     @Test
     public void proceedAllTest() throws IOException {
         List<String> testStringList = Input.readLines(testInputStream);
-        Map<Item, Integer> resInputBucket = Input.proceedAll( testStringList);
+        Map<Item, Integer> resInputBucket = Input.proceedAll(testStringList);
 
-        Map<Item ,Integer> expInputBucket = new HashMap<>();
-        expInputBucket.put(new UnknownItem("test book", 12.49), 1);
-        expInputBucket.put(new UnknownItem("music CD", 14.99), 1);
-        expInputBucket.put(new UnknownItem("chocolate bar", 0.85), 1);
+        Map<Item ,Integer> expectInputBucket = new HashMap<>();
+        expectInputBucket.put(new UnknownItem("test book", 12.49), 1);
+        expectInputBucket.put(new UnknownItem("music CD", 14.99), 1);
+        expectInputBucket.put(new UnknownItem("chocolate bar", 0.85), 1);
 
 
-        Assert.assertEquals(expInputBucket, resInputBucket);
+        Assert.assertEquals(expectInputBucket, resInputBucket);
     }
 
 
     @Test
     public void proceedTest() {
-        Item item = new UnknownItem();
-        item.setName("imported test book");
-        item.setPrice(12.49);
-        item.setIsImport(true);
-        item.setIsExempt(true);
+        Item expectItem = new UnknownItem("imported test book", 12.49);
+        expectItem.setIsImport(true);
+        expectItem.setIsExempt(true);
 
         ShoppingCard card = new Input().proceed("1 imported test book at 12.49");
 
@@ -73,12 +71,12 @@ public class InputTest {
         Item cardItem = itemIntegerEntry.get().getKey();
         Integer cardQuantity = itemIntegerEntry.get().getValue();
 
-        Assert.assertEquals(item, cardItem);
+        Assert.assertEquals(expectItem, cardItem);
         Assert.assertEquals(1, cardQuantity.intValue());
-        Assert.assertEquals(item.getName(), cardItem.getName());
-        Assert.assertEquals(item.getPrice(), cardItem.getPrice(), 0.001);
-        Assert.assertEquals(item.getIsImported(), cardItem.getIsImported());
-        Assert.assertEquals(item.getIsExempt(), cardItem.getIsExempt());
+        Assert.assertEquals(expectItem.getName(), cardItem.getName());
+        Assert.assertEquals(expectItem.getPrice(), cardItem.getPrice(), 0.001);
+        Assert.assertEquals(expectItem.getIsImported(), cardItem.getIsImported());
+        Assert.assertEquals(expectItem.getIsExempt(), cardItem.getIsExempt());
 
     }
 

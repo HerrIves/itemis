@@ -9,7 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Input {
 
@@ -22,7 +25,7 @@ public class Input {
 
     public static List<String> readLines(InputStream in) throws IOException {
         List<String>lines = new ArrayList<>();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         String line;
 
         while ((line = reader.readLine()) != null){
@@ -30,6 +33,15 @@ public class Input {
             lines.add(line);
         }
         return lines;
+    }
+
+    public static Map<Item, Integer> proceedAll(List<String> inputStrings) {
+        HashMap<Item, Integer> resultBucket = inputStrings.parallelStream()
+                .map(new Input()::proceed)
+                .flatMap(card -> card.getBasked().entrySet().stream())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum, HashMap::new));
+
+        return resultBucket;
     }
 
 
