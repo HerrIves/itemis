@@ -3,12 +3,12 @@ package input;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 import items.Item;
 import items.UnknownItem;
+import org.junit.Before;
 import shoppingcard.ShoppingCard;
 
 
@@ -17,18 +17,25 @@ import org.junit.Test;
 
 
 public class InputTest {
-    @Test
-    public void readLinesTest() throws IOException {
-        InputStream consoleIn = System.in;
-        PrintStream consoleOut = System.out;
+    InputStream testInputStream;
 
-        StringBuffer inputStringBuffer = new StringBuffer()
+    @Before
+    public void prepareInputData() {
+        byte[] testInputBytes = new StringBuffer()
                 .append("1 test book at 12.49\n")
                 .append("1  music CD at 14.99\n")
-                .append("1 chocolate bar at 0.85\n");
-        System.setIn(new ByteArrayInputStream(inputStringBuffer.toString().getBytes(StandardCharsets.UTF_8)));
+                .append("1 chocolate bar at 0.85\n")
+                .toString()
+                .getBytes(StandardCharsets.UTF_8);
+        testInputStream = new ByteArrayInputStream(testInputBytes);
+    }
 
-        List<String> lines = Input.readLines(System.in);
+
+    @Test
+    public void readLinesTest() throws IOException {
+        System.setIn(testInputStream);
+
+        List<String> lines = Input.readLines(testInputStream);
         List<String> testLines = new ArrayList<>();
         testLines.add("1 test book at 12.49");
         testLines.add("1  music CD at 14.99");
@@ -39,7 +46,7 @@ public class InputTest {
 
 
     @Test
-    public void proceedTest(){
+    public void proceedTest() {
         Item item = new UnknownItem();
         item.setName("imported test book");
         item.setPrice(12.49);
@@ -62,7 +69,7 @@ public class InputTest {
     }
 
     @Test
-    public void processNameTest(){
+    public void processNameTest() {
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
         input.processName();
@@ -71,7 +78,7 @@ public class InputTest {
     }
 
     @Test
-    public void processQuantityTest(){
+    public void processQuantityTest() {
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
         input.processQuantity();
@@ -80,7 +87,7 @@ public class InputTest {
     }
 
     @Test
-    public void processPriceTest(){
+    public void processPriceTest() {
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
         input.processPrice();
@@ -89,7 +96,7 @@ public class InputTest {
     }
 
     @Test
-    public void processImport(){
+    public void processImport() {
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
         input.processImport();
@@ -98,7 +105,7 @@ public class InputTest {
     }
 
     @Test
-    public void processExemptTest(){
+    public void processExemptTest() {
         Input input = new Input();
         input.inputStrLine = "2 imported test book at 12.49";
         input.processExemptWithChadGTP();
