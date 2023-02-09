@@ -109,9 +109,9 @@ public class Input {
         exceptions.add("chocolate");
         exceptions.add("chocolate");
 
-        exceptions.stream()
+        isExempt = exceptions.stream()
                 .anyMatch(exception->inputStrLine.contains(exception));
-        this.setExempt(true);
+
         return this;
     }
 
