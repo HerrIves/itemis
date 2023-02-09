@@ -9,7 +9,6 @@ import java.util.*;
 import items.Item;
 import items.UnknownItem;
 import org.junit.Before;
-import shoppingcard.ShoppingCard;
 
 
 import org.junit.Assert;
@@ -17,24 +16,37 @@ import org.junit.Test;
 
 
 public class InputTest {
-    InputStream testInputStream;
+    public InputStream testInputStream1;
+    public InputStream testInputStream2;
+    public InputStream testInputStream3;
+
 
     @Before
-    public void prepareInputData() {
+    public void prepareInputData1() {
         byte[] testInputBytes = new StringBuffer()
                 .append("1 test book at 12.49\n")
                 .append("1  music CD at 14.99\n")
                 .append("1 chocolate bar at 0.85\n")
                 .toString()
                 .getBytes(StandardCharsets.UTF_8);
-        testInputStream = new ByteArrayInputStream(testInputBytes);
+        testInputStream1 = new ByteArrayInputStream(testInputBytes);
+    }
+    @Before
+    public void prepareInputData2() {
+        byte[] testInputBytes = new StringBuffer()
+                .append("1 test book at 12.49\n")
+                .append("1  music CD at 14.99\n")
+                .append("1 chocolate bar at 0.85\n")
+                .toString()
+                .getBytes(StandardCharsets.UTF_8);
+        testInputStream1 = new ByteArrayInputStream(testInputBytes);
     }
 
     @Test
     public void readLinesTest() throws IOException {
-        System.setIn(testInputStream);
+        System.setIn(testInputStream1);
 
-        List<String> lines = Input.readLines(testInputStream);
+        List<String> lines = Input.readLines(testInputStream1);
         List<String> testLines = new ArrayList<>();
         testLines.add("1 test book at 12.49");
         testLines.add("1  music CD at 14.99");
@@ -46,7 +58,7 @@ public class InputTest {
 
     @Test
     public void proceedAllTest() throws IOException {
-        List<String> testStringList = Input.readLines(testInputStream);
+        List<String> testStringList = Input.readLines(testInputStream1);
         testStringList.forEach(System.out::println);
         Map<Item, Integer> resInputBucket = Input.proceedAll(testStringList);
 

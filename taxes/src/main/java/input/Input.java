@@ -102,7 +102,7 @@ public class Input {
     public Input processExemptWithChadGTP() {
         List<String>exceptions = new ArrayList<>();
         exceptions.add("book");
-        exceptions.add("pills");
+        exceptions.add("pill");
         exceptions.add("chocolate");
         exceptions.add("chocolate");
 
