@@ -65,9 +65,9 @@ public class InputTest {
         expectItem.setIsImport(true);
         expectItem.setIsExempt(true);
 
-        ShoppingCard card = new Input().proceed("1 imported test book at 12.49");
+        Map<Item, Integer> oneItemBucket = new Input().proceed("1 imported test book at 12.49");
 
-        Optional<Map.Entry<Item, Integer>> itemIntegerEntry = card.getBasked().entrySet().stream().findAny();
+        Optional<Map.Entry<Item, Integer>> itemIntegerEntry = oneItemBucket.entrySet().stream().findAny();
         Item cardItem = itemIntegerEntry.get().getKey();
         Integer cardQuantity = itemIntegerEntry.get().getValue();
 

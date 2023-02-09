@@ -6,4 +6,6 @@ public class UnknownItem extends ItemImpl{
     public UnknownItem(String name, double price) {
         super(name, price);
     }
+
+
 }

@@ -38,28 +38,28 @@ public class Input {
     public static Map<Item, Integer> proceedAll(List<String> inputStrings) {
         HashMap<Item, Integer> resultBucket = inputStrings.parallelStream()
                 .map(new Input()::proceed)
-                .flatMap(card -> card.getBasked().entrySet().stream())
+                .flatMap(oneItemBucket -> oneItemBucket.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum, HashMap::new));
 
         return resultBucket;
     }
 
 
-    public ShoppingCard proceed(String inputStrLine) {
+    public Map<Item, Integer> proceed(String inputStrLine) {
 
         this.inputStrLine = inputStrLine;
 
-        return new ShoppingCard().addItem(
-                Input.this
-                        .processName()
-                        .processQuantity()
-                        .processPrice()
-                        .processImport()
-                        .processExemptWithChadGTP()
-                        .buildItem()
+        Item item = Input.this
+                .processName()
+                .processQuantity()
+                .processPrice()
+                .processImport()
+                .processExemptWithChadGTP()
+                .buildItem();
 
-                , quantity);
-
+        Map<Item, Integer> oneItemBucket = new HashMap<Item, Integer>();
+        oneItemBucket.put(item, quantity);
+        return oneItemBucket;
     }
 
     public Item buildItem() {
