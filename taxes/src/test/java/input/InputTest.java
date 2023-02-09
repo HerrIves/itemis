@@ -30,7 +30,6 @@ public class InputTest {
         testInputStream = new ByteArrayInputStream(testInputBytes);
     }
 
-
     @Test
     public void readLinesTest() throws IOException {
         System.setIn(testInputStream);
@@ -42,6 +41,21 @@ public class InputTest {
         testLines.add("1 chocolate bar at 0.85");
 
         Assert.assertEquals(testLines, lines);
+    }
+
+
+    @Test
+    public void proceedAllTest() throws IOException {
+        List<String> testStringList = Input.readLines(testInputStream);
+        Map<Item, Integer> resInputBucket = Input.proceedAll( testStringList);
+
+        Map<Item ,Integer> expInputBucket = new HashMap<>();
+        expInputBucket.put(new UnknownItem("test book", 12.49), 1);
+        expInputBucket.put(new UnknownItem("music CD", 14.99), 1);
+        expInputBucket.put(new UnknownItem("chocolate bar", 0.85), 1);
+
+
+        Assert.assertEquals(expInputBucket, resInputBucket);
     }
 
 
