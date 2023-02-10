@@ -22,3 +22,9 @@ for example:<br>
 But input date carefully - there is no second chance
 Well that it. Hope that helps! Now try
 
+Our assumptions:
+We assume(and you agree) that user will input data correctly (remember there is no second chance)
+We also assume user will not go over integer limits for items quantity (2^32) and double limit for price(2^64)
+And be careful with multiplication and division of price numbers - it could be dangerous because of floating numbers limitations
+
+For input exit use Vim-exit combination. Kidding! Just press enter
