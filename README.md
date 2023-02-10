@@ -27,4 +27,4 @@ We assume(and you agree) that user will input data correctly (remember there is 
 We also assume user will not go over integer limits for items quantity (2^32) and double limit for price(2^64)
 And be careful with multiplication and division of price numbers - it could be dangerous because of floating numbers limitations
 
-For input exit use Vim-exit combination. Kidding! Just press enter
+At the end of input use Vim-exit combination. Kidding! Just press enter one more time
