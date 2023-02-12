@@ -1,7 +1,6 @@
 package itemtaxes;
 
 
-import items.ImportedBottle;
 import items.Item;
 import items.UnknownItem;
 import org.junit.Assert;
@@ -35,10 +34,12 @@ public class TaxesTest {
 
     @Test
     public void taxesForImportedBottleTest(){
-        ImportedBottle bottle = new ImportedBottle("chanel no 5", 47.50);
+        Item importedBottle = new UnknownItem("chanel no 5", 47.50);
+        importedBottle.setIsImport(true);
+        importedBottle.setIsExempt(false);
 
 
-        Assert.assertEquals(54.65, bottle.getPrice()+ Taxes.taxesOutForItem(bottle), 0.001);
+        Assert.assertEquals(54.65, importedBottle.getPrice()+ Taxes.taxesOutForItem(importedBottle), 0.001);
     }
 
 }
