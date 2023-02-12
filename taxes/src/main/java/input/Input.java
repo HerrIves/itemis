@@ -67,6 +67,7 @@ public class Input {
 
         Map<Item, Integer> oneItemBucket = new HashMap<Item, Integer>();
         oneItemBucket.put(item, quantity);
+
         return oneItemBucket;
     }
 

@@ -1,16 +1,22 @@
 package itemtaxes;
 
-import items.Book;
+
 import items.CD;
 import items.ImportedBottle;
+import items.Item;
+import items.UnknownItem;
 import org.junit.Assert;
 import org.junit.Test;
+
 
 public class TaxesTest {
 
     @Test
     public void taxesForBookTest(){
-        Book book = new Book("am westen nichts neues", 12.49);
+        Item book = new UnknownItem("book am westen nichts neues", 12.49);
+        book.setIsExempt(true);
+        book.setIsImport(false);
+
 
         Assert.assertEquals(12.49, book.getPrice()+ Taxes.taxesOutForItem(book), 0.001);
     }
