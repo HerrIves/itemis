@@ -1,7 +1,6 @@
 package itemtaxes;
 
 
-import items.CD;
 import items.ImportedBottle;
 import items.Item;
 import items.UnknownItem;
@@ -13,7 +12,7 @@ public class TaxesTest {
 
     @Test
     public void taxesForBookTest(){
-        Item book = new UnknownItem("book am westen nichts neues", 12.49);
+        Item book = new UnknownItem("book Im Westen nichts Neues", 12.49);
         book.setIsExempt(true);
         book.setIsImport(false);
 
@@ -23,7 +22,9 @@ public class TaxesTest {
 
     @Test
     public void taxesForCDTest(){
-        CD cd = new CD("sting shape of my heart", 14.99);
+        Item cd = new UnknownItem("cd sting shape of my heart", 14.99);
+        cd.setIsImport(false);
+        cd.setIsExempt(false);
 
         System.out.println(cd.getPrice());
         System.out.println(Taxes.taxesOutForItem(cd));
