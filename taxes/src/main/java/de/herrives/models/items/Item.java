@@ -1,4 +1,4 @@
-package items;
+package de.herrives.models.items;
 
 public interface Item {
     public String getName();

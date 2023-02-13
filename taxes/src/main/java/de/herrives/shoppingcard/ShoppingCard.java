@@ -1,6 +1,6 @@
-package shoppingcard;
+package de.herrives.shoppingcard;
 
-import items.Item;
+import de.herrives.models.items.Item;
 
 import java.util.Collections;
 import java.util.HashMap;

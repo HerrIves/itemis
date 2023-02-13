@@ -1,6 +1,6 @@
-package itemtaxes;
+package de.herrives.itemtaxes;
 
-import items.Item;
+import de.herrives.models.items.*;
 
 import java.util.function.Predicate;
 

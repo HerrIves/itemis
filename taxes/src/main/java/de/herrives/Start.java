@@ -1,7 +1,9 @@
-import input.Input;
-import items.Item;
-import shoppingcard.ShoppingCard;
-import shoppingreceipt.Receipt;
+package de.herrives;
+
+import de.herrives.input.*;
+import de.herrives.models.items.*;
+import de.herrives.shoppingcard.ShoppingCard;
+import de.herrives.shoppingreceipt.Receipt;
 
 import java.io.IOException;
 import java.util.List;

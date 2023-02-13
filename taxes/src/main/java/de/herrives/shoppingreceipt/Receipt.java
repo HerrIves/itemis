@@ -1,13 +1,13 @@
-package shoppingreceipt;
+package de.herrives.shoppingreceipt;
 
-import items.Item;
-import shoppingcard.ShoppingCard;
+import de.herrives.models.items.*;
+import de.herrives.shoppingcard.ShoppingCard;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import static itemtaxes.Taxes.taxesOutForItem;
+import static de.herrives.itemtaxes.Taxes.taxesOutForItem;
 
 public class Receipt {
     private ShoppingCard card;

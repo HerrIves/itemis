@@ -1,7 +1,4 @@
-package input;
-
-import items.Item;
-import items.UnknownItem;
+package de.herrives.input;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,6 +6,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import de.herrives.config.ChadGPTConfig;
+import de.herrives.models.items.*;
+import de.herrives.webclient.OpenAIClient;
 
 public class Input {
 
@@ -53,7 +54,7 @@ public class Input {
     }
 
 
-    public Map<Item, Integer> proceed(String inputStrLine) {
+    public Map<Item, Integer> proceed(String inputStrLine){
 
         this.inputStrLine = inputStrLine;
 
@@ -109,10 +110,14 @@ public class Input {
         return this;
     }
 
-    public Input processExemptWithChadGTP() {
-        isExempt = exceptions.stream()
-                .anyMatch(exception->inputStrLine.contains(exception));
+    public Input processExemptWithChadGTP(){
 
+        Properties config = new ChadGPTConfig().readProperties("chadgpt.properties");
+        OpenAIClient openAIClient = new OpenAIClient(config.getProperty("endPoint"), config.getProperty("apiKey"));
+
+        String promptPattern = config.getProperty("promptPattern");
+
+        isExempt = openAIClient.getAnswerFromAPI(promptPattern, name);
         return this;
     }
 

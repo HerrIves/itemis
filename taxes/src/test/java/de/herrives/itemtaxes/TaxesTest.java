@@ -1,8 +1,8 @@
-package itemtaxes;
+package de.herrives.itemtaxes;
 
 
-import items.Item;
-import items.UnknownItem;
+import de.herrives.models.items.*;
+
 import org.junit.Assert;
 import org.junit.Test;
 

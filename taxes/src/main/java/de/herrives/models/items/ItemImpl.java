@@ -1,4 +1,4 @@
-package items;
+package de.herrives.models.items;
 
 import java.util.Objects;
 

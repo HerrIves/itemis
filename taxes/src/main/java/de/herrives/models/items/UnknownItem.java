@@ -1,4 +1,4 @@
-package items;
+package de.herrives.models.items;
 
 public class UnknownItem extends ItemImpl{
     public UnknownItem() {

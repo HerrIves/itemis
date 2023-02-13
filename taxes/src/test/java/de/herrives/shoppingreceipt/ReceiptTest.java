@@ -1,9 +1,10 @@
-package shoppingreceipt;
+package de.herrives.shoppingreceipt;
 
-import items.*;
+import de.herrives.models.items.Item;
+import de.herrives.models.items.UnknownItem;
 import org.junit.Assert;
 import org.junit.Test;
-import shoppingcard.ShoppingCard;
+import de.herrives.shoppingcard.ShoppingCard;
 
 public class ReceiptTest {
 

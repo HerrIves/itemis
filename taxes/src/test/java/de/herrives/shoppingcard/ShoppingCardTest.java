@@ -1,7 +1,7 @@
-package shoppingcard;
+package de.herrives.shoppingcard;
 
-import items.Item;
-import items.UnknownItem;
+import de.herrives.models.items.Item;
+import de.herrives.models.items.UnknownItem;
 import org.junit.Assert;
 import org.junit.Test;
 

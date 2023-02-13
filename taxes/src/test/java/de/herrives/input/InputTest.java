@@ -1,4 +1,6 @@
-package input;
+package de.herrives.input;
+
+import de.herrives.models.items.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -6,8 +8,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-import items.Item;
-import items.UnknownItem;
 import org.junit.Before;
 
 
@@ -86,12 +86,12 @@ public class InputTest {
 
 
     @Test
-    public void proceedTest() {
-        Item expectItem = new UnknownItem("imported test book", 12.49);
+    public void proceedTest(){
+        Item expectItem = new UnknownItem("imported book im westen nichts neues", 12.49);
         expectItem.setIsImport(true);
         expectItem.setIsExempt(true);
 
-        Map<Item, Integer> oneItemBucket = new Input().proceed("1 imported test book at 12.49");
+        Map<Item, Integer> oneItemBucket = new Input().proceed("1 imported book im westen nichts neues at 12.49");
 
         Optional<Map.Entry<Item, Integer>> itemIntegerEntry = oneItemBucket.entrySet().stream().findAny();
         Item cardItem = itemIntegerEntry.get().getKey();
@@ -143,9 +143,9 @@ public class InputTest {
     }
 
     @Test
-    public void processExemptTest() {
+    public void processExemptTest() throws IOException {
         Input input = new Input();
-        input.inputStrLine = "2 imported test book at 12.49";
+        input.setName("imported book im westen nichts neues");
         input.processExemptWithChadGTP();
 
         Assert.assertEquals(true, input.isExempt());

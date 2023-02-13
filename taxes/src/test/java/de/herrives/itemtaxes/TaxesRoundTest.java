@@ -1,4 +1,4 @@
-package itemtaxes;
+package de.herrives.itemtaxes;
 
 import org.junit.Assert;
 import org.junit.Test;
