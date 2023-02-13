@@ -96,7 +96,7 @@ public class ItemService {
 
     public ItemService processExemptWithChadGTP(){
 
-        Properties config = new ChadGPTConfig().readProperties("chadgpt.properties");
+        Properties config = new ChadGPTConfig().readProperties();
         OpenAIClient openAIClient = new OpenAIClient(config.getProperty("endPoint"), config.getProperty("apiKey"));
 
         String promptPattern = config.getProperty("promptPattern");

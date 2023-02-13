@@ -7,14 +7,11 @@ import java.util.Properties;
 public class ChadGPTConfig {
 
 
-    public Properties readProperties(String filePath){
+    public Properties readProperties(){
         Properties chadGPTProperties = new Properties();
-
-        try {
-            chadGPTProperties.load(getClass().getClassLoader().getResourceAsStream(filePath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        chadGPTProperties.put("endPoint", "https://api.openai.com/v1/completions");
+        chadGPTProperties.put("apiKey", "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");
+        chadGPTProperties.put("promptPattern", "we have %s. If it is kind of food, or kind of book, or kind of medical product, answer \\\"yes\\\". otherwise, answer \\\"no\\\"");
 
         return chadGPTProperties;
     }
