@@ -2,7 +2,7 @@ package de.herrives;
 
 import de.herrives.input.*;
 import de.herrives.models.items.*;
-import de.herrives.shoppingcard.ShoppingCard;
+import de.herrives.models.ShoppingCard;
 import de.herrives.shoppingreceipt.Receipt;
 
 import java.io.IOException;

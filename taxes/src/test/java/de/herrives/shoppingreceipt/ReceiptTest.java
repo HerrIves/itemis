@@ -4,7 +4,7 @@ import de.herrives.models.items.Item;
 import de.herrives.models.items.UnknownItem;
 import org.junit.Assert;
 import org.junit.Test;
-import de.herrives.shoppingcard.ShoppingCard;
+import de.herrives.models.ShoppingCard;
 
 public class ReceiptTest {
 

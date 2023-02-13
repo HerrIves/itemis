@@ -1,5 +1,6 @@
-package de.herrives.shoppingcard;
+package de.herrives.models;
 
+import de.herrives.models.ShoppingCard;
 import de.herrives.models.items.Item;
 import de.herrives.models.items.UnknownItem;
 import org.junit.Assert;

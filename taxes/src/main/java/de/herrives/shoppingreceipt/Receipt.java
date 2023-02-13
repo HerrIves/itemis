@@ -1,7 +1,7 @@
 package de.herrives.shoppingreceipt;
 
 import de.herrives.models.items.*;
-import de.herrives.shoppingcard.ShoppingCard;
+import de.herrives.models.ShoppingCard;
 
 import java.util.ArrayList;
 import java.util.List;

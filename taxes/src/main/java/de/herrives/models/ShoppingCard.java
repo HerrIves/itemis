@@ -1,4 +1,4 @@
-package de.herrives.shoppingcard;
+package de.herrives.models;
 
 import de.herrives.models.items.Item;
 
