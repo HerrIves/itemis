@@ -1,9 +1,5 @@
-package de.herrives.input;
+package de.herrives.services;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,7 +7,7 @@ import de.herrives.config.ChadGPTConfig;
 import de.herrives.models.items.*;
 import de.herrives.webclient.OpenAIClient;
 
-public class Input {
+public class ItemService {
 
     String inputStrLine;
 
@@ -30,11 +26,11 @@ public class Input {
     }
 
 
-    public static Map<Item, Integer> proceedAll(List<String> inputStrings) {
+    public static Map<Item, Integer> proceedAllInput(List<String> inputStrings) {
         Map<Item, Integer> resultBucket;
 
         resultBucket = inputStrings.stream()
-                .map(itemString -> new Input().proceed(itemString))
+                .map(itemString -> new ItemService().proceedEachInput(itemString))
                 .flatMap(oneItemBucket -> oneItemBucket.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum, LinkedHashMap::new));
 
@@ -42,11 +38,11 @@ public class Input {
     }
 
 
-    public Map<Item, Integer> proceed(String inputStrLine){
+    public Map<Item, Integer> proceedEachInput(String inputStrLine){
 
         this.inputStrLine = inputStrLine;
 
-        Item item = Input.this
+        Item item = ItemService.this
                 .processName()
                 .processQuantity()
                 .processPrice()
@@ -70,35 +66,35 @@ public class Input {
         return item;
     }
 
-    public Input processName() {
+    public ItemService processName() {
         String nameWithAt = inputStrLine.substring(inputStrLine.indexOf(" "), inputStrLine.lastIndexOf(" "));
         name = nameWithAt.substring(0, nameWithAt.length() - 2).trim();
 
         return this;
     }
 
-    public Input processQuantity() {
+    public ItemService processQuantity() {
         String quantityStr = inputStrLine.substring(0, inputStrLine.indexOf(" "));
         quantity = Integer.parseInt(quantityStr);
 
         return this;
     }
 
-    public Input processPrice() {
+    public ItemService processPrice() {
         String priceStr = inputStrLine.substring(inputStrLine.lastIndexOf(" ")).trim();
         price = Double.parseDouble(priceStr);
 
         return this;
     }
 
-    public Input processImport() {
+    public ItemService processImport() {
         if (inputStrLine.contains("import"))
             isImport = true;
 
         return this;
     }
 
-    public Input processExemptWithChadGTP(){
+    public ItemService processExemptWithChadGTP(){
 
         Properties config = new ChadGPTConfig().readProperties("chadgpt.properties");
         OpenAIClient openAIClient = new OpenAIClient(config.getProperty("endPoint"), config.getProperty("apiKey"));

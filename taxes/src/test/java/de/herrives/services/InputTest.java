@@ -1,5 +1,6 @@
-package de.herrives.input;
+package de.herrives.services;
 
+import de.herrives.controllers.ConsoleInputController;
 import de.herrives.models.items.*;
 
 import java.io.ByteArrayInputStream;
@@ -44,7 +45,7 @@ public class InputTest {
     public void readLinesTest() throws IOException {
         System.setIn(testInputStream1);
 
-        List<String> lines = Input.readLines(testInputStream1);
+        List<String> lines = ConsoleInputController.readLines(testInputStream1);
         List<String> testLines = new ArrayList<>();
         testLines.add("1 test book at 12.49");
         testLines.add("1  music CD at 14.99");
@@ -56,9 +57,9 @@ public class InputTest {
 
     @Test
     public void proceedAllTest1() throws IOException {
-        List<String> testStringList = Input.readLines(testInputStream1);
+        List<String> testStringList = ConsoleInputController.readLines(testInputStream1);
         testStringList.forEach(System.out::println);
-        Map<Item, Integer> resInputBucket = Input.proceedAll(testStringList);
+        Map<Item, Integer> resInputBucket = ItemService.proceedAllInput(testStringList);
 
 
         Map<Item ,Integer> expectInputBucket = new HashMap<>();
@@ -71,9 +72,9 @@ public class InputTest {
     }
     @Test
     public void proceedAllTest2() throws IOException {
-        List<String> testStringList = Input.readLines(testInputStream2);
+        List<String> testStringList = ConsoleInputController.readLines(testInputStream2);
         testStringList.forEach(System.out::println);
-        Map<Item, Integer> resInputBucket = Input.proceedAll(testStringList);
+        Map<Item, Integer> resInputBucket = ItemService.proceedAllInput(testStringList);
 
 
         Map<Item ,Integer> expectInputBucket = new HashMap<>();
@@ -91,7 +92,7 @@ public class InputTest {
         expectItem.setIsImport(true);
         expectItem.setIsExempt(true);
 
-        Map<Item, Integer> oneItemBucket = new Input().proceed("1 imported book im westen nichts neues at 12.49");
+        Map<Item, Integer> oneItemBucket = new ItemService().proceedEachInput("1 imported book im westen nichts neues at 12.49");
 
         Optional<Map.Entry<Item, Integer>> itemIntegerEntry = oneItemBucket.entrySet().stream().findAny();
         Item cardItem = itemIntegerEntry.get().getKey();
@@ -108,7 +109,7 @@ public class InputTest {
 
     @Test
     public void processNameTest() {
-        Input input = new Input();
+        ItemService input = new ItemService();
         input.inputStrLine = "2 imported test book at 12.49";
         input.processName();
 
@@ -117,7 +118,7 @@ public class InputTest {
 
     @Test
     public void processQuantityTest() {
-        Input input = new Input();
+        ItemService input = new ItemService();
         input.inputStrLine = "2 imported test book at 12.49";
         input.processQuantity();
 
@@ -126,7 +127,7 @@ public class InputTest {
 
     @Test
     public void processPriceTest() {
-        Input input = new Input();
+        ItemService input = new ItemService();
         input.inputStrLine = "2 imported test book at 12.49";
         input.processPrice();
 
@@ -135,7 +136,7 @@ public class InputTest {
 
     @Test
     public void processImport() {
-        Input input = new Input();
+        ItemService input = new ItemService();
         input.inputStrLine = "2 imported test book at 12.49";
         input.processImport();
 
@@ -144,7 +145,7 @@ public class InputTest {
 
     @Test
     public void processExemptTest() throws IOException {
-        Input input = new Input();
+        ItemService input = new ItemService();
         input.setName("imported book im westen nichts neues");
         input.processExemptWithChadGTP();
 

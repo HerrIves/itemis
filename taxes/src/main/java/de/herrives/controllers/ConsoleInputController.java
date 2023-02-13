@@ -8,21 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConsoleInputController {
-    public static List<String> readLines(InputStream in) throws IOException {
-        List<String>lines = new ArrayList<>();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-        String line;
 
-        while ((line = reader.readLine()) != null){
-            if (line.equals(""))break;
-            lines.add(line);
-        }
+    public static List<String> readLines() throws IOException {
+        List<String>lines = readLines(System.in);
+
         return lines;
     }
 
-    public static List<String> readLines() throws IOException {
+    public static List<String> readLines(InputStream in) throws IOException {
         List<String>lines = new ArrayList<>();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         String line;
 
         while ((line = reader.readLine()) != null){
