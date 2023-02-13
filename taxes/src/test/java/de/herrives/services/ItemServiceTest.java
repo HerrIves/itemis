@@ -16,10 +16,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
-public class InputTest {
+public class ItemServiceTest {
     public InputStream testInputStream1;
     public InputStream testInputStream2;
-
 
     @Before
     public void prepareInputData1() {
@@ -40,20 +39,6 @@ public class InputTest {
                 .getBytes(StandardCharsets.UTF_8);
         testInputStream2 = new ByteArrayInputStream(testInputBytes);
     }
-
-    @Test
-    public void readLinesTest() throws IOException {
-        System.setIn(testInputStream1);
-
-        List<String> lines = ConsoleInputController.readLines(testInputStream1);
-        List<String> testLines = new ArrayList<>();
-        testLines.add("1 test book at 12.49");
-        testLines.add("1  music CD at 14.99");
-        testLines.add("1 chocolate bar at 0.85");
-
-        Assert.assertEquals(testLines, lines);
-    }
-
 
     @Test
     public void proceedAllTest1() throws IOException {

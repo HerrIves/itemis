@@ -1,4 +1,4 @@
-package de.herrives.shoppingreceipt;
+package de.herrives.services;
 
 import de.herrives.models.items.Item;
 import de.herrives.models.items.UnknownItem;
@@ -17,7 +17,7 @@ public class ReceiptTest {
 
         card.addItem(item);
 
-        Receipt receipt = new Receipt(card);
+        ReceiptService receipt = new ReceiptService(card);
         receipt.output();
 
         Assert.assertEquals(12.49, receipt.getTotal(), 0.001);
