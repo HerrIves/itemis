@@ -30,18 +30,6 @@ public class Input {
     }
 
 
-    public static List<String> readLines(InputStream in) throws IOException {
-        List<String>lines = new ArrayList<>();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-        String line;
-
-        while ((line = reader.readLine()) != null){
-            if (line.equals(""))break;
-            lines.add(line);
-        }
-        return lines;
-    }
-
     public static Map<Item, Integer> proceedAll(List<String> inputStrings) {
         Map<Item, Integer> resultBucket;
 
