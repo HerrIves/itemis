@@ -48,7 +48,6 @@
         <archive>
           <manifest>
             <addClasspath>true</addClasspath>
-            <classpathPrefix>lib/</classpathPrefix>
             <mainClass>de.herrives.Start</mainClass>
           </manifest>
         </archive>
