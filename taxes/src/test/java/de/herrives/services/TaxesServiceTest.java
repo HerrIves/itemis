@@ -1,4 +1,4 @@
-package de.herrives.itemtaxes;
+package de.herrives.services;
 
 
 import de.herrives.models.items.*;
@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
-public class TaxesTest {
+public class TaxesServiceTest {
 
     @Test
     public void taxesForBookTest(){
@@ -16,7 +16,7 @@ public class TaxesTest {
         book.setIsImport(false);
 
 
-        Assert.assertEquals(12.49, book.getPrice()+ Taxes.taxesOutForItem(book), 0.001);
+        Assert.assertEquals(12.49, book.getPrice()+ TaxesService.taxesOutForItem(book), 0.001);
     }
 
     @Test
@@ -26,10 +26,10 @@ public class TaxesTest {
         cd.setIsExempt(false);
 
         System.out.println(cd.getPrice());
-        System.out.println(Taxes.taxesOutForItem(cd));
-        System.out.println(cd.getPrice()+Taxes.taxesOutForItem(cd));
+        System.out.println(TaxesService.taxesOutForItem(cd));
+        System.out.println(cd.getPrice()+ TaxesService.taxesOutForItem(cd));
 
-        Assert.assertEquals(16.49, cd.getPrice()+ Taxes.taxesOutForItem(cd), 0.001);
+        Assert.assertEquals(16.49, cd.getPrice()+ TaxesService.taxesOutForItem(cd), 0.001);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class TaxesTest {
         importedBottle.setIsExempt(false);
 
 
-        Assert.assertEquals(54.65, importedBottle.getPrice()+ Taxes.taxesOutForItem(importedBottle), 0.001);
+        Assert.assertEquals(54.65, importedBottle.getPrice()+ TaxesService.taxesOutForItem(importedBottle), 0.001);
     }
 
 }

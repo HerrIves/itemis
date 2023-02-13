@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import static de.herrives.itemtaxes.Taxes.taxesOutForItem;
+import static de.herrives.services.TaxesService.taxesOutForItem;
 
 public class ReceiptService {
     private ShoppingCard card;

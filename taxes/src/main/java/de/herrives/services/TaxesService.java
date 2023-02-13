@@ -1,17 +1,15 @@
-package de.herrives.itemtaxes;
+package de.herrives.services;
 
-import de.herrives.models.items.*;
+import de.herrives.config.TaxesConfig;
+import de.herrives.models.items.Item;
 
 import java.util.function.Predicate;
 
-public class Taxes {
-    private static final double BASIC_TAX = 0.10;
-    private static final double IMPORT_TAX = 0.05;
-
+public class TaxesService {
     public static double taxesOutForItem(Item item){
         double taxes = 0;
-        if ( ! item.getIsExempt()) taxes += item.getPrice() * BASIC_TAX;
-        if (item.getIsImported())  taxes += item.getPrice() * IMPORT_TAX;
+        if ( ! item.getIsExempt()) taxes += item.getPrice() * TaxesConfig.getBasicTax();
+        if (item.getIsImported())  taxes += item.getPrice() * TaxesConfig.getImportTax();
 
         return roundTaxes(taxes);
     }
@@ -26,5 +24,4 @@ public class Taxes {
 
         return ((double) (inputTaxesLong / 10 * 10 + inputTaxesLongEnding)) / 100;
     }
-
 }
