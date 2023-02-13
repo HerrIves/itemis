@@ -3,7 +3,6 @@ package de.herrives.services;
 import de.herrives.config.TaxesConfig;
 import de.herrives.models.items.Item;
 
-import java.util.function.Predicate;
 
 public class TaxesService {
     public static double taxesOutForItem(Item item){
@@ -15,13 +14,11 @@ public class TaxesService {
     }
 
     public static double roundTaxes(Double inputTaxes) {
-        final long inputTaxesLong = Math.round(inputTaxes*100);
+        final long inputTaxesLong = Math.round(inputTaxes*100);                                         //1.75666 -> 176
 
-        Predicate<Integer> ifInputTaxesMoreThan = integer -> inputTaxesLong % 10 > integer;
-
-        long inputTaxesLongEnding =
-                ifInputTaxesMoreThan.test(5) ? 10 : ifInputTaxesMoreThan.test(0) ? 5 : 0;
-
-        return ((double) (inputTaxesLong / 10 * 10 + inputTaxesLongEnding)) / 100;
+        long inputTaxesLongEnding = inputTaxesLong % 10 > 5 ? 10 : inputTaxesLong % 10 > 0 ? 5 : 0;     //176     ->  6 > 5 ->  10
+                                                                                                        //                      ||
+                                                                                                        //                      \/
+        return ((double) (inputTaxesLong / 10 * 10 + inputTaxesLongEnding)) / 100;                      //176     -> 17 -> 170+ 10 = 180 -> 1.8
     }
 }

@@ -10,6 +10,11 @@ import org.junit.Test;
 public class TaxesServiceTest {
 
     @Test
+    public void roundTest() {
+        Assert.assertEquals(3.35, TaxesService.roundTaxes(3.33), 0.0001);
+    }
+
+    @Test
     public void taxesForBookTest(){
         Item book = new UnknownItem("book Im Westen nichts Neues", 12.49);
         book.setIsExempt(true);
